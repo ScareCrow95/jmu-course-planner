@@ -1,3 +1,3 @@
-# React Starter Project
+# JMU course planner
 
 ### Chakra-UI + MOBX + AXIOS 
