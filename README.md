@@ -1,6 +1,6 @@
 # JMU course planner
 
-### Chakra-UI + MOBX + AXIOS 
+### React.js Chakra-UI + MOBX + AXIOS 
 
 ## Installation
 
