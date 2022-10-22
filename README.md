@@ -1,4 +1,5 @@
-# JMU course planner
+# JMU course planner [DEMO](https://jmu-course-planner.ml)
+
 
 ### React.js Chakra-UI + MOBX + AXIOS 
 
