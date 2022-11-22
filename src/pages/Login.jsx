@@ -21,7 +21,7 @@ const Login = observer(() => {
         backdropFilter='blur(8px)'
         bg='rgb(0,0,0,.45)'>
         <Input mb={2} placeholder='Email' />
-        <Input placeholder='password' type='password' />
+        <Input placeholder='Password' type='password' />
         <Text
           mt={3}
           fontWeight='semibold'
