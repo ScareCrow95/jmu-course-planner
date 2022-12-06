@@ -17,7 +17,7 @@ import Background from '../common/Background'
 const StudentInfo = observer(() => {
   const ui = useUIStore()
   return (
-    <Background>
+    <Background justify='' align='' overflow='hidden'>
       <Image src='/images/seal.png' boxSize='160px' mb={6} alt='jmu-seal' />
       <Flex
         direction='column'
