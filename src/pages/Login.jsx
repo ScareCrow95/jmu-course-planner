@@ -24,11 +24,10 @@ const Login = observer(() => {
         align='center'
         backdropFilter='blur(8px)'
         bg='rgb(0,0,0,.45)'>
-        <Input mb={2} placeholder='Email' size='lg' w='320px' ref={emailRef} />
+        <Input mb={2} placeholder='Email' w='320px' ref={emailRef} />
         <Input
           placeholder='Password'
           type='password'
-          size='lg'
           w='320px'
           ref={passwordRef}
         />
@@ -46,18 +45,18 @@ const Login = observer(() => {
           mt={12}
           w='100%'
           onClick={() => {
-            if (
-              emailRef.current.value !== 'matt@gmail.com' ||
-              passwordRef.current.value !== '123456'
-            ) {
-              uiStore.root.showToast(
-                'Authentication Error',
-                'Email or password is wrong',
-                'error'
-              )
-            } else {
-              uiStore.view = 'form'
-            }
+            // if (
+            //   emailRef.current.value !== 'matt@gmail.com' ||
+            //   passwordRef.current.value !== '123456'
+            // ) {
+            //   uiStore.root.showToast(
+            //     'Authentication Error',
+            //     'Email or password is wrong',
+            //     'error'
+            //   )
+            // } else {
+            uiStore.view = 'form'
+            // }
           }}>
           Login
         </Button>

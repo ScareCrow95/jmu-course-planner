@@ -23,6 +23,11 @@ export class UIStore {
   formCourseSem = ''
 
   /**
+   * @type {Set<string>}
+   */
+  minors = new observable.set()
+
+  /**
    * @type {('current'|'new')}
    */
   enrollStatus = 'current'

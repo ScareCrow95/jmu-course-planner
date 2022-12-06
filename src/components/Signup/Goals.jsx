@@ -23,7 +23,18 @@ const CheckboxItem = observer(({ name, id, mt = '0' }) => {
 
   return (
     <Flex align='center' role='group' cursor='pointer'>
-      <Checkbox colorScheme='orange' mt={mt} />
+      <Checkbox
+        colorScheme='orange'
+        mt={mt}
+        // isChecked={ui.minors.has(name)}
+        onChange={(e) => {
+          if (e.target.checked) {
+            ui.minors.add(name)
+          } else {
+            ui.minors.delete(name)
+          }
+        }}
+      />
       <Text ml={2}>{name}</Text>
       <Icon
         onClick={() => {
@@ -72,7 +83,7 @@ const Goals = observer(() => {
           Minors (CS Related)
         </Text>
         {/* <Checkbox colorScheme='orange'>Computer Information Systems</Checkbox> */}
-        <CheckboxItem name='Computer Information Systems' id='cis' />
+        <CheckboxItem name='CIS' id='cis' />
         <CheckboxItem name='Math' id='math' />
         <CheckboxItem name='Physics' id='physics' />
         <CheckboxItem name='Robotics' id='robotics' />
