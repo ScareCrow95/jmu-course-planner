@@ -46,18 +46,18 @@ const Login = observer(() => {
           mt={12}
           w='100%'
           onClick={() => {
-            // if (
-            //   emailRef.current.value !== 'matt@gmail.com' ||
-            //   passwordRef.current.value !== '123456'
-            // ) {
-            //   uiStore.root.showToast(
-            //     'Authentication Error',
-            //     'Email or password is wrong',
-            //     'error'
-            //   )
-            // } else {
-            uiStore.view = 'form'
-            // }
+            if (
+              emailRef.current.value !== 'matt@gmail.com' ||
+              passwordRef.current.value !== '123456'
+            ) {
+              uiStore.root.showToast(
+                'Authentication Error',
+                'Email or password is wrong',
+                'error'
+              )
+            } else {
+              uiStore.view = 'form'
+            }
           }}>
           Login
         </Button>
