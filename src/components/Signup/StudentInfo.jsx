@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react'
 import {
-  Box,
-  Text,
-  Center,
+  Button,
+  Divider,
   Flex,
   Image,
-  Circle,
-  Icon,
-  Divider,
-  Checkbox,
-  Button,
-  Link,
+  Radio,
+  RadioGroup,
+  Stack,
+  Text,
 } from '@chakra-ui/react'
 import { observer } from 'mobx-react-lite'
-import Background from '../common/Background'
-import { MdChevronLeft } from 'react-icons/md'
+import React from 'react'
 import { useUIStore } from '../../store/rootStore'
 import BackButton from '../common/BackButton'
+import Background from '../common/Background'
 
 const StudentInfo = observer(() => {
   const ui = useUIStore()
@@ -42,17 +38,37 @@ const StudentInfo = observer(() => {
           <Text fontSize='xl' fontWeight='bold' mb={2}>
             Enrollment Status
           </Text>
-          <Checkbox colorScheme='orange'>Current Student</Checkbox>
-          <Checkbox colorScheme='orange'>New Student</Checkbox>
+          <RadioGroup
+            colorScheme='orange'
+            value={ui.enrollStatus}
+            onChange={(e) => {
+              ui.enrollStatus = e
+              if (e === 'new') {
+                ui.year = 'freshman'
+              }
+            }}>
+            <Stack direction='row'>
+              <Radio value='current'>Current Student</Radio>
+              <Radio value='new'>New Student</Radio>
+            </Stack>
+          </RadioGroup>
         </Flex>
         <Flex direction='column' mt={4}>
           <Text fontSize='xl' fontWeight='bold' mb={2}>
             Course Status
           </Text>
           <Text mb={2}>Do you have courses eligible to transfer?</Text>
-          <Checkbox colorScheme='orange'>Current Student</Checkbox>
-          <Checkbox colorScheme='orange'>New Student</Checkbox>
-
+          <RadioGroup
+            colorScheme='orange'
+            value={ui.courseElligible ? '1' : '2'}
+            onChange={(e) => {
+              ui.courseElligible = e === '1'
+            }}>
+            <Stack direction='row'>
+              <Radio value='1'>Yes</Radio>
+              <Radio value='2'>No</Radio>
+            </Stack>
+          </RadioGroup>
           <Text
             mt={3}
             _hover={{ color: 'pr.100' }}
@@ -71,10 +87,21 @@ const StudentInfo = observer(() => {
           <Text fontSize='xl' fontWeight='bold' mb={2}>
             What year are you?
           </Text>
-          <Checkbox colorScheme='orange'>Freshman</Checkbox>
-          <Checkbox colorScheme='orange'>Sophomore</Checkbox>
-          <Checkbox colorScheme='orange'>Junior</Checkbox>
-          <Checkbox colorScheme='orange'>Senior</Checkbox>
+
+          <RadioGroup
+            colorScheme='orange'
+            isDisabled={ui.enrollStatus === 'new'}
+            onChange={(e) => {
+              ui.year = e
+            }}
+            value={ui.year}>
+            <Stack>
+              <Radio value='freshman'>Freshman</Radio>
+              <Radio value='sophomore'>Sophomore</Radio>
+              <Radio value='junior'>Junior</Radio>
+              <Radio value='senior'>Senior</Radio>
+            </Stack>
+          </RadioGroup>
         </Flex>
         <Button
           colorScheme='orange'
@@ -82,7 +109,11 @@ const StudentInfo = observer(() => {
           mt={12}
           w='100%'
           onClick={() => {
-            ui.form = 'course'
+            if (ui.enrollStatus === 'new' && !ui.courseElligible) {
+              ui.form = 'goals'
+            } else {
+              ui.form = 'course'
+            }
           }}>
           Continue
         </Button>

@@ -1,6 +1,6 @@
 import { Center, Flex, Text, Image, Input, Button } from '@chakra-ui/react'
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React, { useRef } from 'react'
 import Lottie from 'react-lottie'
 import { LottieAnimations, LottieConfig } from '../constants/lottie'
 import { URL } from '../constants/url'
@@ -9,7 +9,11 @@ import Background from '../components/common/Background'
 import { useStores } from '../store/rootStore'
 
 const Login = observer(() => {
+  // matt@gmail.com
+  //123456
   const { uiStore } = useStores()
+  const emailRef = useRef()
+  const passwordRef = useRef()
   return (
     <Background>
       <Image src='/images/title.png' w='300px' mb={6} alt='title' />
@@ -20,8 +24,14 @@ const Login = observer(() => {
         align='center'
         backdropFilter='blur(8px)'
         bg='rgb(0,0,0,.45)'>
-        <Input mb={2} placeholder='Email' />
-        <Input placeholder='Password' type='password' />
+        <Input mb={2} placeholder='Email' size='lg' w='320px' ref={emailRef} />
+        <Input
+          placeholder='Password'
+          type='password'
+          size='lg'
+          w='320px'
+          ref={passwordRef}
+        />
         <Text
           mt={3}
           fontWeight='semibold'
@@ -36,7 +46,18 @@ const Login = observer(() => {
           mt={12}
           w='100%'
           onClick={() => {
+            // if (
+            //   emailRef.current.value !== 'matt@gmail.com' ||
+            //   passwordRef.current.value !== '123456'
+            // ) {
+            //   uiStore.root.showToast(
+            //     'Authentication Error',
+            //     'Email or password is wrong',
+            //     'error'
+            //   )
+            // } else {
             uiStore.view = 'form'
+            // }
           }}>
           Login
         </Button>

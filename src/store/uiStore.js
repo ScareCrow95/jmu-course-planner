@@ -23,6 +23,18 @@ export class UIStore {
   formCourseSem = ''
 
   /**
+   * @type {('current'|'new')}
+   */
+  enrollStatus = 'current'
+
+  courseElligible = false
+
+  /**
+   * @type {('freshman'|'sophomore'|'junior'|'senior')}
+   */
+  year = 'freshman'
+
+  /**
    * @type {Map<string,{num:number,sem:string,name:string}>}
    */
   courses = new observable.map()
@@ -32,6 +44,11 @@ export class UIStore {
   }
 
   dialog = ''
+
+  /**
+   * @type {('cis'|'math'|'physics'|'robotics'|'nsa'|'vt')}
+   */
+  goalType = 'cis'
 
   get selectedEvent() {
     return this.root.events.get(this.selectedEventId)
