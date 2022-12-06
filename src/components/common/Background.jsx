@@ -34,15 +34,13 @@ const Background = observer((props) => {
         position='relative'
         overflow='hidden'
         zIndex={1}
-        {...props}
         direction='column'>
         <Flex
           direction='column'
           overflowY='auto'
           px={3}
           justify='center'
-          align='center'
-          {...props}>
+          align='center'>
           {props.children}
         </Flex>
       </Flex>
