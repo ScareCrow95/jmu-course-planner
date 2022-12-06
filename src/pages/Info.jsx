@@ -57,7 +57,7 @@ const Header = observer(() => {
             Total Credit Count
           </Text>
           <Text fontWeight='bold' fontSize='xl'>
-            72
+            121
           </Text>
         </Flex>
         <Divider orientation='vertical' mx={3} />
